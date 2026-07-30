@@ -1,6 +1,6 @@
 package com.example.employee_management_system.services.interfaces;
 
-import com.example.employee_management_system.dtos.CreateEmployee;
+import com.example.employee_management_system.dtos.CreateEmployeeInput;
 import com.example.employee_management_system.models.Employee;
 import org.springframework.data.domain.Page;
 
@@ -13,5 +13,5 @@ public interface EmployeeService {
 
     void deleteOne(UUID employeeId);
 
-    Employee createOne(UUID departmentId, CreateEmployee createEmployee);
+    Employee createOne(UUID departmentId, CreateEmployeeInput createEmployee);
 }

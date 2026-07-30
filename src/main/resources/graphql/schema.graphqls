@@ -5,7 +5,7 @@ enum Role {
 
 type Employee {
     id: ID!
-    userName: String!
+    username: String!
     email: String!
     role: Role!
     department: Department!
@@ -46,7 +46,7 @@ type Mutation {
     createDepartment(input: CreateDepartmentInput!): Department!
     deleteDepartment(id: ID!): Boolean!
 
-    createEmployee(departmentId: ID!, input: CreateEmployeeInput): String!
+    createEmployee(departmentId: ID!, input: CreateEmployeeInput): Employee!
     deleteEmployee(id: ID!): Boolean!
 }
 

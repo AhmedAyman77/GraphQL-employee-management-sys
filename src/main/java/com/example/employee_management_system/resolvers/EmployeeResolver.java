@@ -1,6 +1,6 @@
 package com.example.employee_management_system.resolvers;
 
-import com.example.employee_management_system.dtos.CreateEmployee;
+import com.example.employee_management_system.dtos.CreateEmployeeInput;
 import com.example.employee_management_system.dtos.EmployeePage;
 import com.example.employee_management_system.models.Employee;
 import com.example.employee_management_system.services.interfaces.EmployeeService;
@@ -48,7 +48,7 @@ public class EmployeeResolver {
     }
 
     @MutationMapping
-    public Employee createEmployee(@Argument UUID departmentId, @Argument CreateEmployee createEmployee) {
+    public Employee createEmployee(@Argument UUID departmentId, @Argument("input") CreateEmployeeInput createEmployee) {
         return employeeService.createOne(departmentId, createEmployee);
     }
 }

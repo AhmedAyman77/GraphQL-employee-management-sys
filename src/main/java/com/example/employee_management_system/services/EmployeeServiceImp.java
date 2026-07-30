@@ -1,6 +1,6 @@
 package com.example.employee_management_system.services;
 
-import com.example.employee_management_system.dtos.CreateEmployee;
+import com.example.employee_management_system.dtos.CreateEmployeeInput;
 import com.example.employee_management_system.error.CustomResponseException;
 import com.example.employee_management_system.models.Department;
 import com.example.employee_management_system.models.Employee;
@@ -46,22 +46,15 @@ public class EmployeeServiceImp implements EmployeeService {
     }
 
     @Override
-    public Employee createOne(UUID departmentId, CreateEmployee createEmployee) {
+    public Employee createOne(UUID departmentId, CreateEmployeeInput createEmployee) {
 
         employeeRepository.findOneByEmail(createEmployee.email())
-                            .ifPresent(
-                                employee -> {
-                                    throw CustomResponseException.BadRequest("email or username already exists");
-                                }
-                            );
-
+                .ifPresent(e -> { throw CustomResponseException.BadRequest("email already exists"); });
 
         employeeRepository.findOneByUsername(createEmployee.username())
-                            .ifPresent(
-                                    employee -> {
-                                        throw CustomResponseException.BadRequest("email or username already exists");
-                                    }
-                            );
+                .ifPresent(e -> { throw CustomResponseException.BadRequest("username already exists"); });
+
+        System.out.println("--------------------------------------------------------------");
 
         Employee newEmployee = new Employee();
         newEmployee.setUsername(createEmployee.username());

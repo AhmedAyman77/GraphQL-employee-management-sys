@@ -35,12 +35,8 @@ public class Employee {
     @Column(name = "role", nullable = false, length = 20)
     private String role = "USER";
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "department_id", nullable = false)
     @JsonProperty("departmentId")
     private Department department;
-
-    public UUID getDepartment() {
-        return department.getId();
-    }
 }
